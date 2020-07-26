@@ -1,95 +1,83 @@
 public class StatsService {
-    public int Sum(int[] data) {
-        int total_sum = 0;
+    public int sum(int[] data) {
+        int totalSum = 0;
         for (int sum : data) {
-            total_sum += sum;
+            totalSum += sum;
         }
-        return total_sum;
+        return totalSum;
     }
 
-    public float AverageSum(int[] data) {
-        int sum = 0, a = 0;
+    public float averageSum(int[] data) {
+        int sum = 0, temp = 0;
         float average = 0;
         for (int b : data) {
             sum += b;
-            a++;
+            temp++;
         }
-        average = (float) sum / a;
+        average = (float) sum / temp;
         return average;
     }
 
-    public String NumberMonthsOfMaxSales(int[] data) {    //3 Номер месяца, в котором был пик продаж
-        int a = 0, max_month = 0, number_month_2 = 0;
-        String number_month = "";
+    public String numberMonthsOfMaxSales(int[] data) {    //3 Номер месяца, в котором был пик продаж
+        int temp = 0, maxMonth = 0;
+        String numberMonth = "";
         for (int month : data) {
 
-            if (max_month < month) {
-                max_month = month;
-                                // number_month = "В " + String.valueOf(a); //String b = String.valueOf(a);
+            if (maxMonth < month) {
+                maxMonth = month;
             }
         }
-        for (int month:data){
-            a++;
-            if (max_month == month){
-                number_month += " в " + String.valueOf(a);
-            }
-        }
-        number_month += " мес.";
-        return String.valueOf(number_month);
-    }
-//    public int NumberMonthsOfMaxSales(int[] data) {    //3 Номер месяца, в котором был пик продаж
-//        int a = 0, max_month = 0, number_month = 0;
-//        for (int month : data) {
-//            a++;
-//            if (max_month < month) {
-//                max_month = month;
-//                number_month = a;
-//            }
-//        }
-//        return number_month;
-//    }
-
-    public int NumberMonthsOfMinSales(int[] data) {
-        int a = 0, min_month = data[0], number_month = 1;
         for (int month : data) {
-            a++;
-            if (min_month > month) {
-                min_month = month;
-                number_month = a;
+            temp++;
+            if (maxMonth == month) {
+                numberMonth += " в " + String.valueOf(temp);
             }
         }
-        return number_month;
+        numberMonth += " мес.";
+        return String.valueOf(numberMonth);
     }
 
-    public int NumberOfMonthsSalesBelowAverage(int[] data) {           //5
-        int sum = 0, a = 0, number_of_months = 0;
+    public int numberMonthsOfMinSales(int[] data) {
+        int temp = 0, minMonth = data[0], numberMonth = 1;
+        for (int month : data) {
+            temp++;
+            if (minMonth > month) {
+                minMonth = month;
+                numberMonth = temp;
+            }
+        }
+        return numberMonth;
+    }
+
+    public int numberOfMonthsSalesBelowAverage(int[] data) {           //5
+        int sum = 0, temp = 0, numberOfMonths = 0;
         float average = 0;
         for (int b : data) {
             sum += b;
-            a++;
+            temp++;
         }
-        average = (float) sum / a;
+        average = (float) sum / temp;
         for (int b : data) {
             if (b < average) {
-                number_of_months++;
+                numberOfMonths++;
             }
         }
-        return number_of_months;
+        return numberOfMonths;
     }
 
-    public int NumberOfMonthsSalesAboveAverage(int[] data) {
-        int sum = 0, a = 0, number_of_months = 0;
+    public int numberOfMonthsSalesAboveAverage(int[] data) {
+        int sum = 0, temp = 0, numberOfMonths = 0;
         float average = 0;
         for (int b : data) {
             sum += b;
-            a++;
+            temp++;
         }
-        average = (float) sum / a;
+        average = (float) sum / temp;
         for (int b : data) {
             if (b > average) {
-                number_of_months++;
+                numberOfMonths++;
             }
         }
-        return number_of_months;
+        return numberOfMonths;
     }
 }
