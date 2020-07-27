@@ -18,36 +18,30 @@ public class StatsService {
         return average;
     }
 
-    public String numberMonthsOfMaxSales(int[] data) {    //3 Номер месяца, в котором был пик продаж
-        int temp = 0, maxMonth = 0;
-        String numberMonth = "";
+    public int numberMonthsOfMaxSales(int[] data) {    //3 Номер месяца, в котором был пик продаж
+        int a = 0, max_month = 0, number_month = 0;
         for (int month : data) {
-
-            if (maxMonth < month) {
-                maxMonth = month;
+            a++;
+            if (max_month <= month) {
+                max_month = month;
+                number_month = a;
             }
         }
-        for (int month : data) {
-            temp++;
-            if (maxMonth == month) {
-                numberMonth += " в " + String.valueOf(temp);
-            }
-        }
-        numberMonth += " мес.";
-        return String.valueOf(numberMonth);
+        return number_month;
     }
 
     public int numberMonthsOfMinSales(int[] data) {
         int temp = 0, minMonth = data[0], numberMonth = 1;
         for (int month : data) {
             temp++;
-            if (minMonth > month) {
+            if (minMonth >= month) {
                 minMonth = month;
                 numberMonth = temp;
             }
         }
         return numberMonth;
     }
+
 
     public int numberOfMonthsSalesBelowAverage(int[] data) {           //5
         int sum = 0, temp = 0, numberOfMonths = 0;
